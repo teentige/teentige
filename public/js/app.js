@@ -73,15 +73,26 @@ function setRangeFill(el) {
   el.style.setProperty('--fill', `${((val - min) / (max - min)) * 100}%`);
 }
 
+/* ------------------------------------------------------------ safe storage
+   Some preview/embedded contexts block localStorage — never let that kill the page. */
+const storage = {
+  get(key) {
+    try { return localStorage.getItem(key); } catch (_) { return null; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); } catch (_) {}
+  },
+};
+
 /* ------------------------------------------------------------ theme */
 function applyTheme() {
-  const dark = localStorage.getItem('serene-theme') === 'dark';
+  const dark = storage.get('serene-theme') === 'dark';
   document.documentElement.classList.toggle('dark', dark);
   $('#themeToggle').textContent = dark ? '☀' : '☾';
 }
 $('#themeToggle').addEventListener('click', () => {
   const dark = document.documentElement.classList.toggle('dark');
-  localStorage.setItem('serene-theme', dark ? 'dark' : 'light');
+  storage.set('serene-theme', dark ? 'dark' : 'light');
   $('#themeToggle').textContent = dark ? '☀' : '☾';
 });
 
@@ -120,6 +131,7 @@ function renderStatic() {
 
 /* ------------------------------------------------------------ hero rotation */
 function renderHero() {
+  els.heroBg.innerHTML = '';
   const featured = state.photos.filter((p) => p.featured);
   const pool = featured.length ? featured : state.photos.slice(0, 3);
   if (!pool.length) {
@@ -333,6 +345,10 @@ els.miniVol.addEventListener('input', () => {
 
 /* ------------------------------------------------------------ reveal on scroll */
 function initReveal() {
+  if (typeof IntersectionObserver === 'undefined') {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+    return;
+  }
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -355,12 +371,18 @@ function esc(s) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  applyTheme();
-  setRangeFill(els.seek);
-  setRangeFill(els.miniSeek);
-  setRangeFill(els.miniVol);
-  loadSite().catch((err) => {
-    console.error('Failed to load site data', err);
-    els.heroTitle.textContent = 'Welcome';
-  });
+  try {
+    applyTheme();
+    setRangeFill(els.seek);
+    setRangeFill(els.miniSeek);
+    setRangeFill(els.miniVol);
+    loadSite().catch((err) => {
+      console.error('Failed to load site data', err);
+      const banner = $('#siteError');
+      banner.textContent = 'Could not load the site content. Please refresh in a moment.';
+      banner.hidden = false;
+    });
+  } catch (err) {
+    console.error('Site init error', err);
+  }
 });

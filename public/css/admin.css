@@ -19,14 +19,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: "Outfit", "Segoe UI", system-ui, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.55;
   font-weight: 300;
 }
 
-h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; line-height: 1.2; }
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; line-height: 1.2; }
 h1 { font-size: 34px; }
 h2 { font-size: 22px; margin-bottom: 8px; }
 a { color: inherit; text-decoration: none; }
@@ -101,7 +101,7 @@ label input, label textarea { margin-top: 6px; display: block; color: var(--ink)
 }
 .side-brand {
   display: flex; align-items: center; gap: 10px;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 22px; letter-spacing: 0.04em;
   padding: 4px 10px 22px;
   color: #fff;
@@ -157,7 +157,7 @@ label input, label textarea { margin-top: 6px; display: block; color: var(--ink)
   padding: 20px; display: flex; flex-direction: column; gap: 2px;
 }
 .stat-icon { font-size: 24px; margin-bottom: 6px; }
-.stat-card b { font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; font-weight: 600; }
+.stat-card b { font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 600; }
 .stat-card span:last-child { color: var(--ink-soft); font-size: 13px; }
 
 .quick-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
