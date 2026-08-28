@@ -1,0 +1,78 @@
+{
+  "settings": {
+    "siteTitle": "Serene",
+    "siteTagline": "a quiet place to breathe",
+    "heroTitle": "Breathe in. Let go.",
+    "heroSubtitle": "Photos and music to slow your day down — made and curated by me, for you.",
+    "about": "This is my little corner of the internet. A place where the photos are slow and the music is softer. Take a breath, look around, and stay as long as you like.",
+    "footerText": "Made with quiet intention.",
+    "coverUrl": "uploads/cover.jpg"
+  },
+  "photos": [
+    {
+      "id": "73a585a9-e5b8-477c-aea6-b23743296e1e",
+      "title": "Golden Horizon",
+      "description": "The ocean breathing at the edge of the sky.",
+      "url": "uploads/photos/1787944858621-u12kh3-golden-horizon.jpg",
+      "featured": true
+    },
+    {
+      "id": "58fe827b-613b-488e-8db7-c3aa0395670a",
+      "title": "Lavender Dusk",
+      "description": "A field settling into evening.",
+      "url": "uploads/photos/1787944858622-9s7fyh-lavender-dusk.jpg",
+      "featured": false
+    },
+    {
+      "id": "d4dea38b-00ec-4127-a05e-63d8109fbc17",
+      "title": "Mirror Lake",
+      "description": "Mountains reflected in perfectly still water.",
+      "url": "uploads/photos/1787944858623-8dhxn4-mirror-lake.jpg",
+      "featured": false
+    },
+    {
+      "id": "35f9581c-596e-4e2d-bb56-8fcf58512bc0",
+      "title": "Misty Morning Forest",
+      "description": "Soft light filtering through ancient pines.",
+      "url": "uploads/photos/1787944858624-agp02d-misty-forest.jpg",
+      "featured": true
+    },
+    {
+      "id": "94dc8c72-c822-48ad-8ab8-897dd06bdbb8",
+      "title": "River of Stones",
+      "description": "Slow water over smooth, patient stone.",
+      "url": "uploads/photos/1787944858626-psmzrt-river-stones.jpg",
+      "featured": false
+    },
+    {
+      "id": "7b0b8a95-5a5f-464a-bfd3-09fde123461e",
+      "title": "A Thousand Stars",
+      "description": "A quiet night above the sleeping hills.",
+      "url": "uploads/photos/1787944858627-ae9v10-starry-night.jpg",
+      "featured": true
+    }
+  ],
+  "tracks": [
+    {
+      "id": "dede59fb-d639-47e4-a2f1-ad702beb57cf",
+      "title": "Forest Breeze",
+      "artist": "Serene Fields",
+      "url": "uploads/music/1787944858628-66yagk-forest-breeze.wav",
+      "duration": 132
+    },
+    {
+      "id": "f70d751f-ab9f-4061-be93-b25200311da5",
+      "title": "Moonlit Waves",
+      "artist": "Serene Fields",
+      "url": "uploads/music/1787944858645-0v5j7s-moonlit-waves.wav",
+      "duration": 120
+    },
+    {
+      "id": "11c3821d-e379-4eef-bb00-189b9f262123",
+      "title": "Starlight Drift",
+      "artist": "Serene Fields",
+      "url": "uploads/music/1787944858658-uvnyxx-starlight-drift.wav",
+      "duration": 100
+    }
+  ]
+}

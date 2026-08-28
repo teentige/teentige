@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage — Serene</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <div class="login-leaf">🌿</div>
+      <h1>Manage your site</h1>
+      <p class="login-sub">Enter your admin password to manage photos, music and settings.</p>
+      <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" required />
+      <p class="login-error" id="loginError"></p>
+      <button class="btn btn-primary" type="submit">Unlock</button>
+      <a class="login-back" href="/">← back to the site</a>
+    </form>
+  </div>
+
+  <!-- ADMIN APP -->
+  <div class="admin" id="adminApp" hidden>
+
+    <aside class="sidebar">
+      <div class="side-brand"><span class="side-leaf">🌿</span><span id="sideBrand">Serene</span></div>
+      <nav class="side-nav">
+        <button class="side-link active" data-tab="dashboard"><span>◈</span> Dashboard</button>
+        <button class="side-link" data-tab="photos"><span>🖼</span> Photos</button>
+        <button class="side-link" data-tab="music"><span>♪</span> Music</button>
+        <button class="side-link" data-tab="settings"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="side-foot">
+        <a class="side-link" href="/" target="_blank" rel="noopener"><span>↗</span> View site</a>
+        <button class="side-link" id="logoutBtn"><span>⎋</span> Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <!-- DASHBOARD -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Hello, welcome back</h1>
+            <p class="sub">Here's what your site looks like right now.</p>
+          </div>
+        </header>
+
+        <div class="stat-grid">
+          <div class="stat-card"><span class="stat-icon">🖼</span><b id="statPhotos">0</b><span>Photos</span></div>
+          <div class="stat-card"><span class="stat-icon">♪</span><b id="statTracks">0</b><span>Tracks</span></div>
+          <div class="stat-card"><span class="stat-icon">☆</span><b id="statFeatured">0</b><span>Featured</span></div>
+        </div>
+
+        <div class="card">
+          <h2>Quick actions</h2>
+          <div class="quick-actions">
+            <a class="btn" href="#tab-photos" data-goto="photos">＋ Add photos</a>
+            <a class="btn" href="#tab-music" data-goto="music">＋ Add music</a>
+            <a class="btn" href="#tab-settings" data-goto="settings">✎ Edit texts</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Tips for a relaxing site</h2>
+          <ul class="tips">
+            <li>Mark your <b>3–5 favorite photos as "featured"</b> — they rotate slowly behind the hero text on the homepage.</li>
+            <li>Upload <b>.mp3 or .wav files</b> (up to 60&nbsp;MB each). WAV files get their duration read automatically.</li>
+            <li>Keep photo titles short and calm — they appear over the image on hover.</li>
+            <li>Drag items to reorder them. Order = the order visitors see on the site.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PHOTOS -->
+      <section class="tab-panel" id="tab-photos">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">Photos</p>
+            <h1>Your gallery</h1>
+            <p class="sub">Upload, edit, feature and reorder your photos.</p>
+          </div>
+        </header>
+
+        <div class="card upload-card">
+          <h2>Upload photos</h2>
+          <p class="sub">JPG, PNG, WebP or GIF — up to 20 MB each, multiple files at once.</p>
+          <div class="dropzone" id="photoDropzone">
+            <input type="file" id="photoInput" accept="image/*" multiple hidden />
+            <p class="dz-main">Drop photos here, or <b>click to browse</b></p>
+            <p class="dz-sub">They appear on the site immediately</p>
+          </div>
+          <div class="upload-progress" id="photoProgress" hidden>
+            <div class="bar"><div class="bar-fill" id="photoBarFill"></div></div>
+            <span id="photoBarText">Uploading…</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>All photos</h2>
+            <button class="btn btn-ghost-sm" id="savePhotoOrderBtn" hidden>Save order</button>
+          </div>
+          <div class="item-grid" id="photoGrid"></div>
+        </div>
+      </section>
+
+      <!-- MUSIC -->
+      <section class="tab-panel" id="tab-music">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">Music</p>
+            <h1>Your music</h1>
+            <p class="sub">Upload tracks, rename them and decide the play order.</p>
+          </div>
+        </header>
+
+        <div class="card upload-card">
+          <h2>Upload music</h2>
+          <p class="sub">MP3, WAV, OGG, M4A, FLAC… up to 60 MB each, multiple files at once.</p>
+          <div class="dropzone" id="trackDropzone">
+            <input type="file" id="trackInput" accept="audio/*" multiple hidden />
+            <p class="dz-main">Drop music here, or <b>click to browse</b></p>
+            <p class="dz-sub">It joins the player immediately</p>
+          </div>
+          <div class="upload-progress" id="trackProgress" hidden>
+            <div class="bar"><div class="bar-fill" id="trackBarFill"></div></div>
+            <span id="trackBarText">Uploading…</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>All tracks</h2>
+            <button class="btn btn-ghost-sm" id="saveTrackOrderBtn" hidden>Save order</button>
+          </div>
+          <div class="track-admin-list" id="trackList"></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="tab-panel" id="tab-settings">
+        <header class="page-head">
+          <div>
+            <p class="eyebrow">Settings</p>
+            <h1>Shape your site</h1>
+            <p class="sub">Every word on the homepage is yours to change.</p>
+          </div>
+        </header>
+
+        <form class="card form" id="settingsForm">
+          <h2>Site identity</h2>
+          <label>Site title<input name="siteTitle" maxlength="60" /></label>
+          <label>Tagline (small text above the hero title)<input name="siteTagline" maxlength="120" /></label>
+
+          <h2>Homepage hero</h2>
+          <label>Hero title<input name="heroTitle" maxlength="80" /></label>
+          <label>Hero subtitle<textarea name="heroSubtitle" rows="2" maxlength="300"></textarea></label>
+
+          <h2>About section</h2>
+          <label>About text<textarea name="about" rows="5" maxlength="800"></textarea></label>
+          <label>Footer text<input name="footerText" maxlength="200" /></label>
+
+          <button class="btn btn-primary" type="submit">Save changes</button>
+          <p class="form-msg" id="settingsMsg"></p>
+        </form>
+
+        <form class="card form" id="passwordForm">
+          <h2>Change password</h2>
+          <label>Current password<input type="password" name="currentPassword" autocomplete="current-password" /></label>
+          <label>New password (at least 6 characters)<input type="password" name="newPassword" minlength="6" autocomplete="new-password" /></label>
+          <button class="btn btn-primary" type="submit">Update password</button>
+          <p class="form-msg" id="passwordMsg"></p>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- EDITOR MODAL -->
+  <div class="modal" id="editorModal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <h2 id="modalTitle">Edit</h2>
+      <p class="modal-sub" id="modalSub"></p>
+      <form id="editorForm">
+        <label>Title<input name="title" maxlength="120" required /></label>
+        <label>Description<textarea name="description" rows="3" maxlength="400"></textarea></label>
+        <div id="extraFields"></div>
+        <div class="modal-actions">
+          <button class="btn btn-danger" type="button" id="deleteBtn">Delete</button>
+          <span class="spacer"></span>
+          <button class="btn" type="button" id="cancelBtn">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
